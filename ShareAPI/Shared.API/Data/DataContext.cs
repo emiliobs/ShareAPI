@@ -9,6 +9,8 @@ public class DataContext : DbContext
     {
     }
 
+    // malparidos lindos
+
     // Logic: Define DbSet for Users and Clients
     public DbSet<User> Users { get; set; }
 
