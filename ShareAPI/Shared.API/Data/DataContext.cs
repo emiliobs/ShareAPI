@@ -17,6 +17,7 @@ public class DataContext : DbContext
 
         // Logic: Set unique index for Email
         modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+        modelBuilder.Entity<Client>().HasIndex(c => c.Email).IsUnique();
 
         // Logic: Seed 25 users into the database
         try
@@ -48,6 +49,29 @@ public class DataContext : DbContext
                 new User { Id = 24, FirstName = "Hugo", LastName = "Cano", Phone = "56900000000123456722", Email = "h.cano@example.com", Password = "Cano303" },
                 new User { Id = 25, FirstName = "Silvia", LastName = "Bustos", Phone = "56900000000123456723", Email = "s.bustos@example.com", Password = "Bustos4" }
             );
+
+            modelBuilder.Entity<Client>().HasData(
+                 new Client { Id = 1, Name = "Tech Solutions", Email = "contact@techsolutions.com", PhoneNumber = "+1234567890" },
+                 new Client { Id = 2, Name = "Global Logistics", Email = "info@globallogistics.com", PhoneNumber = "+1987654321" },
+                 new Client { Id = 3, Name = "Creative Agency", Email = "hello@creativeagency.net", PhoneNumber = "+1122334455" },
+                 new Client { Id = 4, Name = "Summit Retail", Email = "support@summitretail.com", PhoneNumber = "+1555666777" },
+                 new Client { Id = 5, Name = "Oceanic Corp", Email = "admin@oceanic.org", PhoneNumber = "+1444333222" },
+                 new Client { Id = 6, Name = "Prime Health", Email = "billing@primehealth.com", PhoneNumber = "+1888999000" },
+                 new Client { Id = 7, Name = "Eco Energy", Email = "sales@ecoenergy.io", PhoneNumber = "+1777111222" },
+                 new Client { Id = 8, Name = "Stellar Soft", Email = "dev@stellarsoft.com", PhoneNumber = "+1666555444" },
+                 new Client { Id = 9, Name = "Urban Eats", Email = "manager@urbaneats.com", PhoneNumber = "+1222999888" },
+                 new Client { Id = 10, Name = "Blue Horizon", Email = "info@bluehorizon.com", PhoneNumber = "+1333444555" },
+                 new Client { Id = 11, Name = "Fast Track", Email = "ops@fasttrack.com", PhoneNumber = "+1999888777" },
+                 new Client { Id = 12, Name = "Green Leaf", Email = "contact@greenleaf.net", PhoneNumber = "+1000111222" },
+                 new Client { Id = 13, Name = "Nexus IT", Email = "support@nexusit.com", PhoneNumber = "+1111222333" },
+                 new Client { Id = 14, Name = "Skyline Const", Email = "office@skyline.com", PhoneNumber = "+1444555666" },
+                 new Client { Id = 15, Name = "Peak Finance", Email = "wealth@peakfinance.com", PhoneNumber = "+1777888999" },
+                 new Client { Id = 16, Name = "Nova Media", Email = "ads@novamedia.com", PhoneNumber = "+1222333444" },
+                 new Client { Id = 17, Name = "Terra Firma", Email = "land@terrafirma.org", PhoneNumber = "+1555444333" },
+                 new Client { Id = 18, Name = "Vivid Arts", Email = "gallery@vividarts.com", PhoneNumber = "+1666777888" },
+                 new Client { Id = 19, Name = "Zenith Group", Email = "ceo@zenith.com", PhoneNumber = "+1888777666" },
+                 new Client { Id = 20, Name = "Delta Apps", Email = "build@deltaapps.io", PhoneNumber = "+1000999888" }
+             );
         }
         catch (Exception ex)
         {
