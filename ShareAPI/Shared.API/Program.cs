@@ -1,17 +1,26 @@
+using Shared.API.Data;
+
+// This namespace is usually required for Middleware extension methods
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddSqlServer<DataContext>(builder.Configuration.GetConnectionString("LocalConnection"));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// --- HTTP Request Pipeline Section ---
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    // Modern aesthetic: Enable the Swagger UI in development mode
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
 }
 
 app.UseHttpsRedirection();
