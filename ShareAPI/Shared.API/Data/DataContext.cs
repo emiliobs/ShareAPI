@@ -14,6 +14,8 @@ public class DataContext : DbContext
 
     public DbSet<Client> Clients { get; set; }
 
+    public DbSet<Company> Companies { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -21,6 +23,8 @@ public class DataContext : DbContext
         // Logic: Set unique index for Email
         modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
         modelBuilder.Entity<Client>().HasIndex(c => c.Email).IsUnique();
+        modelBuilder.Entity<Company>().HasIndex(com => com.TaxId).IsUnique();
+        modelBuilder.Entity<Company>().HasIndex(com => com.ContactEmail).IsUnique();
 
         // Logic: Seed 25 users into the database
         try
@@ -75,6 +79,29 @@ public class DataContext : DbContext
                  new Client { Id = 19, Name = "Zenith Group", Email = "ceo@zenith.com", PhoneNumber = "+1888777666" },
                  new Client { Id = 20, Name = "Delta Apps", Email = "build@deltaapps.io", PhoneNumber = "+1000999888" }
              );
+
+            modelBuilder.Entity<Company>().HasData(
+                new Company { Id = 1, Name = "Alpha Tech Group", TaxId = "76.123.456-1", Address = "Silicon Valley 101", ContactEmail = "info@alphatech.com", Phone = "+15550101" },
+                new Company { Id = 2, Name = "Beta Logistics SA", TaxId = "76.123.456-2", Address = "Industrial Park 45", ContactEmail = "ops@betalog.com", Phone = "+15550102" },
+                new Company { Id = 3, Name = "Gamma Creative Lab", TaxId = "76.123.456-3", Address = "Downtown Ave 789", ContactEmail = "hello@gammalab.net", Phone = "+15550103" },
+                new Company { Id = 4, Name = "Delta Food & Bev", TaxId = "76.123.456-4", Address = "Market Street 12", ContactEmail = "orders@deltafood.com", Phone = "+15550104" },
+                new Company { Id = 5, Name = "Epsilon Energy", TaxId = "76.123.456-5", Address = "Green Tower 5", ContactEmail = "admin@epsilon.org", Phone = "+15550105" },
+                new Company { Id = 6, Name = "Zeta Healthcare", TaxId = "76.123.456-6", Address = "Medical Center Plaza", ContactEmail = "care@zetahealth.com", Phone = "+15550106" },
+                new Company { Id = 7, Name = "Eta Construction", TaxId = "76.123.456-7", Address = "Build Site 99", ContactEmail = "projects@etacon.com", Phone = "+15550107" },
+                new Company { Id = 8, Name = "Theta Software", TaxId = "76.123.456-8", Address = "Code Road 404", ContactEmail = "support@theta.io", Phone = "+15550108" },
+                new Company { Id = 9, Name = "Iota Retail", TaxId = "76.123.456-9", Address = "Shopping Mall Wing B", ContactEmail = "sales@iota.com", Phone = "+15550109" },
+                new Company { Id = 10, Name = "Kappa Finance", TaxId = "76.123.456-10", Address = "Wall Street 200", ContactEmail = "finance@kappa.net", Phone = "+15550110" },
+                new Company { Id = 11, Name = "Lambda Transport", TaxId = "76.123.456-11", Address = "Port Terminal 3", ContactEmail = "fleet@lambda.com", Phone = "+15550111" },
+                new Company { Id = 12, Name = "Mu Marketing", TaxId = "76.123.456-12", Address = "Creative Hub 10", ContactEmail = "ads@mu.agency", Phone = "+15550112" },
+                new Company { Id = 13, Name = "Nu Networking", TaxId = "76.123.456-13", Address = "Signal Way 55", ContactEmail = "noc@nu.com", Phone = "+15550113" },
+                new Company { Id = 14, Name = "Xi Exports", TaxId = "76.123.456-14", Address = "Global Trade Center", ContactEmail = "export@xi.com", Phone = "+15550114" },
+                new Company { Id = 15, Name = "Omicron Security", TaxId = "76.123.456-15", Address = "Safe House Blvd", ContactEmail = "protect@omicron.org", Phone = "+15550115" },
+                new Company { Id = 16, Name = "Pi Consulting", TaxId = "76.123.456-16", Address = "Expertise Lane 314", ContactEmail = "advice@piconsult.com", Phone = "+15550116" },
+                new Company { Id = 17, Name = "Rho Real Estate", TaxId = "76.123.456-17", Address = "Property Heights 22", ContactEmail = "rent@rho.com", Phone = "+15550117" },
+                new Company { Id = 18, Name = "Sigma Telecom", TaxId = "76.123.456-18", Address = "Antenna Hill 1", ContactEmail = "telco@sigma.io", Phone = "+15550118" },
+                new Company { Id = 19, Name = "Tau Tourism", TaxId = "76.123.456-19", Address = "Airport View 77", ContactEmail = "travel@tau.com", Phone = "+15550119" },
+                new Company { Id = 20, Name = "Upsilon Mining", TaxId = "76.123.456-20", Address = "Mountain Road 50", ContactEmail = "earth@upsilon.com", Phone = "+15550120" }
+            );
         }
         catch (Exception ex)
         {
