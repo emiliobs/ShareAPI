@@ -9,7 +9,10 @@ public class DataContext : DbContext
     {
     }
 
+    // Logic: Define DbSet for Users and Clients
     public DbSet<User> Users { get; set; }
+
+    public DbSet<Client> Clients { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
